@@ -32,5 +32,4 @@ describe('Deck', function() {
     expect(deck.countCards()).to.equal(3);
   });
 
-
 });

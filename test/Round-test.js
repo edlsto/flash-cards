@@ -77,7 +77,6 @@ describe('Round', function() {
     const deck = new Deck([card1, card2, card3]);
     const round = new Round(deck);
     round.takeTurn('sea otter');
-    console.log(round.deck)
 
     expect(round.takeTurn('spleen')).to.equal('incorrect!');
   });
@@ -114,5 +113,7 @@ describe('Round', function() {
     round.takeTurn('spleen');
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
+
+
 
 });
