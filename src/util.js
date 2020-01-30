@@ -1,7 +1,4 @@
 const inquirer = require('inquirer');
-const Card = require('./Card')
-const Deck = require('./Deck')
-const Round = require('./Round')
 const data = require('./data');
 const prototypeQuestions = data.prototypeData;
 const secondSet = data.secondSet;
