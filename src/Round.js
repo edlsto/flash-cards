@@ -4,6 +4,8 @@ class Round {
     this.turns = 0;
     this.incorrectGuesses = [];
     this.deck.name = deck.name;
+    this.startTime = new Date();
+
   }
 
   returnCurrentCard() {
@@ -26,7 +28,12 @@ class Round {
     return Math.round((this.turns - this.incorrectGuesses.length) / this.turns * 100);
   }
 
+  giveTime() {
+    console.log(`This round took you ${Math.round((new Date() - this.startTime) / 1000)} seconds to complete.`)
+  }
+
   endRound() {
+    console.log((new Date() - this.startTime) / 1000)
     console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly`)
   }
 
