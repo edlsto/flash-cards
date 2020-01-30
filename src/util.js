@@ -32,7 +32,7 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round, game) {
+async function main(round, game, questions) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
@@ -41,10 +41,10 @@ async function main(round, game) {
     round.endRound();
     console.log('Your score was too low! Try this round again!')
     game.currentRound.deck.name === 'original' ? game.start(prototypeQuestions, game, game.currentRound.deck.name) : game.start(secondSet, game, game.currentRound.deck.name)
-  } else if (!round.returnCurrentCard() && !game.currentRound.deck.name.includes('review')) {
+  } else if (!round.returnCurrentCard() && !game.currentRound.deck.name.includes('review') && round.calculatePercentCorrect() < 100) {
     round.giveTime();
     round.endRound();
-    game.review(round);
+    game.review(round, questions);
   } else if (!round.returnCurrentCard() && game.currentRound.deck.name === 'original-review') {
     game.start(secondSet, game, 'second-set');
   } else if (!round.returnCurrentCard())  {
