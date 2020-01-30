@@ -29,7 +29,6 @@ class Game {
   }
 
   start(questions, game, deckName) {
-    //round1 - OG cards
     var cards = [];
     questions.forEach(question => {
       if (question instanceof Card === false) {
@@ -48,8 +47,6 @@ class Game {
       this.printMessageRound2(deck, round)
     }
     this.printQuestion(round, game)
-
-    //round 2 - new dataset
   }
 
   review(round) {
@@ -58,11 +55,6 @@ class Game {
     })
     var deckName = this.currentRound.deck.name + '-review'
     this.start(reviewQuestions, this, deckName)
-    // console.log(prototypeQuestions.find( question => question.id === round.incorrectGuesses[0]))
-    // const reviewQuestions = this.incorrectGuesses.map(id => {
-    //   prototypeQuestions.find(question => question.id === id)
-    // })
-    // start(questions, game, deckName)
   }
 
 
