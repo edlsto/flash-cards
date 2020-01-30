@@ -27,12 +27,8 @@ class Round {
     return Math.round((this.turns - this.incorrectGuesses.length) / this.turns * 100);
   }
 
-  giveTime() {
-    console.log(`This round took you ${Math.round((new Date() - this.startTime) / 1000)} seconds to complete.`)
-  }
-
   endRound() {
-    console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly`)
+    console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly. This round took you ${Math.round((new Date() - this.startTime) / 1000)} seconds to complete.`)
   }
 
 }
