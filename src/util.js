@@ -32,7 +32,7 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round, game, questions) {
+async function main(round, game) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
@@ -44,7 +44,7 @@ async function main(round, game, questions) {
   } else if (!round.returnCurrentCard() && !game.currentRound.deck.name.includes('review') && round.calculatePercentCorrect() < 100) {
     round.giveTime();
     round.endRound();
-    game.review(round, questions);
+    game.review(round);
   } else if (!round.returnCurrentCard() && game.currentRound.deck.name === 'original-review') {
     game.start(secondSet, game, 'second-set');
   } else if (!round.returnCurrentCard())  {
