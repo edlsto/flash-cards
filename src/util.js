@@ -46,8 +46,8 @@ async function main(round, game) {
     round.endRound();
     game.start(secondSet, game, 'second-set');
   } else if (!round.returnCurrentCard())  {
-    round.endRound();
     round.giveTime()
+    round.endRound();
   } else {
     main(round, game);
   }
