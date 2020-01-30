@@ -33,7 +33,7 @@ describe('Game', function() {
       answers: ["array", "object", "function"],
       correctAnswer: "array"
     }]
-    game.start(cards);
+    game.start(cards, game);
     expect(game.currentRound).to.deep.equal(new Round(new Deck(cards)))
   });
 });
