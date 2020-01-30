@@ -41,7 +41,7 @@ class Game {
     this.currentRound = round;
     if (game.currentRound.deck.name === 'original') {
       this.printMessage(deck, round)
-    } else if (game.currentRound.deck.name.includes('review')) {
+    } else if (game.currentRound.deck.name && game.currentRound.deck.name.includes('review')) {
       this.printMessageReview()
     } else {
       this.printMessageRound2(deck, round)
