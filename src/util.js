@@ -1,4 +1,10 @@
 const inquirer = require('inquirer');
+const Card = require('./Card')
+const Deck = require('./Deck')
+const Round = require('./Round')
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
+const secondSet = data.secondSet;
 
 const genList = (round) => {
   let card = round.returnCurrentCard();
@@ -29,15 +35,17 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round) {
-
+async function main(round, game) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
-    if(!round.returnCurrentCard()) {
+    if(!round.returnCurrentCard() && game.currentRound.deck.name === 'original') {
+      round.endRound();
+      game.start(secondSet, game, 'second-set');
+    } else if (!round.returnCurrentCard())  {
       round.endRound();
     } else {
-      main(round);
+      main(round, game);
     }
 }
 
