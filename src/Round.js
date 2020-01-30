@@ -5,7 +5,6 @@ class Round {
     this.incorrectGuesses = [];
     this.deck.name = deck.name;
     this.startTime = new Date();
-
   }
 
   returnCurrentCard() {
@@ -33,12 +32,8 @@ class Round {
   }
 
   endRound() {
-    console.log((new Date() - this.startTime) / 1000)
     console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly`)
   }
-
-
-
 }
 
 module.exports = Round;
