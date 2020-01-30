@@ -150,6 +150,39 @@ const prototypeData = [{
   "correctAnswer": "prototype method"
 }]
 
+const secondSet = [{
+  "id": 1,
+  "question": "What is a characteristic of a primitive data type?",
+  "answers": ["Is an object", "Has methods", "Is immutable"],
+  "correctAnswer": "Is immutable"
+}, {
+  "id": 2,
+  "question": "What is an example of a primitive data type?",
+  "answers": ["array", "object", "boolean"],
+  "correctAnswer": "boolean"
+}, {
+  "id": 3,
+  "question": "What is a characteristic of a complex data type?",
+  "answers": ["is an object", "is immutable", "has complicated feelings"],
+  "correctAnswer": "is an object"
+}, {
+  "id": 4,
+  "question": "What is an example of a complex data type?",
+  "answers": ["null", "string", "object"],
+  "correctAnswer": "object"
+}, {
+  "id": 5,
+  "question": "What is a method?",
+  "answers": ["a general way of doing things", "a function on an object", "an object"],
+  "correctAnswer": "iteration method"
+}, {
+  "id": 6,
+  "question": "What is the result of 5 + '10'?",
+  "answers": ["'510' (string)", "510 (number)", "15 (number)"],
+  "correctAnswer": "'510' (string)"
+}]
+
 module.exports = {
-  prototypeData 
+  prototypeData,
+  secondSet
 }
