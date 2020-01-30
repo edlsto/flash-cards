@@ -174,7 +174,7 @@ const secondSet = [{
   "id": 5,
   "question": "What is a method?",
   "answers": ["a general way of doing things", "a function on an object", "an object"],
-  "correctAnswer": "iteration method"
+  "correctAnswer": "a function on an object"
 }, {
   "id": 6,
   "question": "What is the result of 5 + '10'?",
