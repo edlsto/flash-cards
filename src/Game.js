@@ -24,8 +24,8 @@ class Game {
     console.log(`Let's review the questions you got wrong!`)
   }
 
-  printQuestion(round, game) {
-      util.main(round, game);
+  printQuestion(round, game, questions) {
+      util.main(round, game, questions);
   }
 
   start(questions, game, deckName) {
@@ -46,12 +46,12 @@ class Game {
     } else {
       this.printMessageRound2(deck, round)
     }
-    this.printQuestion(round, game)
+    this.printQuestion(round, game, questions)
   }
 
-  review(round) {
+  review(round, questions) {
     const reviewQuestions = round.incorrectGuesses.map(guessId => {
-      return prototypeQuestions.find(question => question.id === guessId)
+      return questions.find(question => question.id === guessId)
     })
     var deckName = this.currentRound.deck.name + '-review'
     this.start(reviewQuestions, this, deckName)
