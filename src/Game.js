@@ -25,7 +25,6 @@ class Game {
   }
 
   start(questions, game, deckName) {
-    //round1 - OG cards
     var cards = [];
     questions.forEach(question => {
       var card = new Card(question.id, question.question, question.answers, question.correctAnswer)
@@ -40,12 +39,7 @@ class Game {
       this.printMessageRound2(deck, round)
     }
     this.printQuestion(round, game)
-
-    //round 2 - new dataset
   }
-
-
-
 }
 
 module.exports = Game;
