@@ -3,6 +3,7 @@ class Round {
     this.deck = deck.cards;
     this.turns = 0;
     this.incorrectGuesses = [];
+    this.deck.name = deck.name;
   }
 
   returnCurrentCard() {
@@ -28,6 +29,9 @@ class Round {
   endRound() {
     console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly`)
   }
+
+
+
 }
 
 module.exports = Round;
