@@ -36,7 +36,7 @@ async function main(round, game) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
-  if (!round.returnCurrentCard() && round.calculatePercentCorrect() < 50) {
+  if (!round.returnCurrentCard() && round.calculatePercentCorrect() < 90) {
     round.giveTime()
     round.endRound();
     console.log('Your score was too low! Try this round again!')
