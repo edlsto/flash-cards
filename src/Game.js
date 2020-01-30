@@ -20,6 +20,10 @@ class Game {
 -----------------------------------------------------------------------`)
   }
 
+  printMessageReview(deck, round) {
+    console.log(`Let's review the questions you got wrong!`)
+  }
+
   printQuestion(round, game) {
       util.main(round, game);
   }
@@ -27,18 +31,36 @@ class Game {
   start(questions, game, deckName) {
     var cards = [];
     questions.forEach(question => {
-      var card = new Card(question.id, question.question, question.answers, question.correctAnswer)
-      cards.push(card)
+      if (question instanceof Card === false) {
+        var card = new Card(question.id, question.question, question.answers, question.correctAnswer)
+        cards.push(card)
+      }
     })
     const deck = new Deck(cards, deckName)
     const round = new Round(deck)
     this.currentRound = round;
     if (game.currentRound.deck.name === 'original') {
       this.printMessage(deck, round)
+    } else if (game.currentRound.deck.name.includes('review')) {
+      this.printMessageReview()
     } else {
       this.printMessageRound2(deck, round)
     }
     this.printQuestion(round, game)
+  }
+
+  review(round) {
+    var questionSet;
+    if (round.deck.name === 'original') {
+      questionSet = prototypeQuestions;
+    } else {
+      questionSet = secondSet;
+    }
+    const reviewQuestions = round.incorrectGuesses.map(guessId => {
+      return questionSet.find(question => question.id === guessId)
+    })
+    var deckName = this.currentRound.deck.name + '-review'
+    this.start(reviewQuestions, this, deckName)
   }
 }
 
