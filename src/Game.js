@@ -56,9 +56,6 @@ class Game {
     var deckName = this.currentRound.deck.name + '-review'
     this.start(reviewQuestions, this, deckName)
   }
-
-
-
 }
 
 module.exports = Game;
