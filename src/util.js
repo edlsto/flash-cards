@@ -36,7 +36,7 @@ async function main(round, game) {
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
-  if (!round.returnCurrentCard() && round.calculatePercentCorrect() < 80 & game.currentRound.deck.name.includes('review') === false) {
+  if (!round.returnCurrentCard() && round.calculatePercentCorrect() < 90 & game.currentRound.deck.name.includes('review') === false) {
     round.endRound();
     console.log('Your score was too low! Try this round again!')
     game.currentRound.deck.name === 'original' ? game.start(prototypeQuestions, game, game.currentRound.deck.name) : game.start(secondSet, game, game.currentRound.deck.name)
