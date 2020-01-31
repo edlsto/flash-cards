@@ -39,9 +39,9 @@ class Game {
     const deck = new Deck(cards, deckName)
     const round = new Round(deck)
     this.currentRound = round;
-    if (game.currentRound.deck.name === 'original') {
+    if (this.currentRound.deck.name === 'original') {
       this.printMessage(deck)
-    } else if (game.currentRound.deck.name && game.currentRound.deck.name.includes('review')) {
+    } else if (this.currentRound.deck.name && this.currentRound.deck.name.includes('review')) {
       this.printMessageReview()
     } else {
       this.printMessageRound2(deck)
