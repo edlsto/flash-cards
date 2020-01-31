@@ -7,7 +7,9 @@ const Deck = require('../src/Deck')
 const Round = require('../src/Round')
 
 class Game {
-  constructor() {
+  constructor(decks) {
+    this.decks = decks;
+    this.currentDeck = this.decks[0];
   }
 
   printMessage(deck) {
@@ -28,40 +30,27 @@ class Game {
     util.main(round, game);
   }
 
-  start(questions, game, deckName) {
+  start() {
     var cards = [];
-    questions.forEach(question => {
+    this.decks[0].forEach(question => {
       if (question instanceof Card === false) {
         var card = new Card(question.id, question.question, question.answers, question.correctAnswer)
         cards.push(card)
       }
     })
-    const deck = new Deck(cards, deckName)
+    const deck = new Deck(cards)
     const round = new Round(deck)
     this.currentRound = round;
-    if (game.currentRound.deck.name === 'original') {
-      this.printMessage(deck)
-    } else if (game.currentRound.deck.name && game.currentRound.deck.name.includes('review')) {
-      this.printMessageReview()
-    } else {
-      this.printMessageRound2(deck)
-    }
-    this.printQuestion(round, game)
+    this.printMessage(deck)
+    this.printQuestion(round)
+    //wait until round over
+    this.printMessageReview()
+    round.review()
   }
 
-  review(round) {
-    var questionSet;
-    if (round.deck.name === 'original') {
-      questionSet = prototypeQuestions;
-    } else {
-      questionSet = secondSet;
-    }
-    const reviewQuestions = round.incorrectGuesses.map(guessId => {
-      return questionSet.find(question => question.id === guessId)
-    })
-    var deckName = this.currentRound.deck.name + '-review'
-    this.start(reviewQuestions, this, deckName)
-  }
+
+
+
 }
 
 module.exports = Game;
