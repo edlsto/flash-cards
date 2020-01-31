@@ -1,4 +1,4 @@
-# FlashCards Starter Kit
+# FlashCards
 
 ## Abstract
 
