@@ -31,6 +31,15 @@ class Round {
     console.log(`**Round over** You answered ${this.calculatePercentCorrect()}% of the questions correctly. This round took you ${Math.round((new Date() - this.startTime) / 1000)} seconds to complete.`)
   }
 
+  review(game) {
+    if (!this.returnCurrentCard()) {
+        const reviewQuestions = this.incorrectGuesses.map(guessId => {
+          return game.decks[0].find(question => question.id === guessId)
+        })
+        console.log(reviewQuestions)
+    }
+  }
+
 }
 
 module.exports = Round;
