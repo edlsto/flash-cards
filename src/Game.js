@@ -10,22 +10,22 @@ class Game {
   constructor() {
   }
 
-  printMessage(deck, round) {
-      console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
+  printMessage(deck) {
+    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
 
-  printMessageRound2(deck, round) {
-      console.log(`Let's try another round! You are playing with ${deck.countCards()} cards.
+  printMessageRound2(deck) {
+    console.log(`Let's try another round! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
 
-  printMessageReview(deck, round) {
+  printMessageReview() {
     console.log(`Let's review the questions you got wrong!`)
   }
 
   printQuestion(round, game) {
-      util.main(round, game);
+    util.main(round, game);
   }
 
   start(questions, game, deckName) {
@@ -40,11 +40,11 @@ class Game {
     const round = new Round(deck)
     this.currentRound = round;
     if (game.currentRound.deck.name === 'original') {
-      this.printMessage(deck, round)
+      this.printMessage(deck)
     } else if (game.currentRound.deck.name && game.currentRound.deck.name.includes('review')) {
       this.printMessageReview()
     } else {
-      this.printMessageRound2(deck, round)
+      this.printMessageRound2(deck)
     }
     this.printQuestion(round, game)
   }
